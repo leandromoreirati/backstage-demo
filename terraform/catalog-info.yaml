@@ -1,0 +1,38 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: pgsql-azure-backstage-demo
+  namespace: azure
+  description: |
+    Terraform module to create a [Azure PostgreSQL Flexible](https://github.com/leandromoreirati/tf-module-azure-postgresql).
+  #labels:
+  #  example.com/custom: custom_label_value
+  annotations:
+    backstage.io/techdocs-ref: dir:.
+    backstage.io/code-coverage: scm-only
+    backstage.io/template-origin: template:azure/azure-postgresql-flexible
+    backstage.io/repo-url: github.com?owner=leandromoreirati&repo=backstage-demo
+    sonarqube.org/project-key: leandromoreirati/backstage-demo
+    github.com/project-slug: leandromoreirati/backstage-demo
+  tags:
+    - infrastructure
+    - iac
+    - terraform
+    - postgresql
+    - database
+  links:
+    - url: https://github.com/leandromoreirati/tf-module-azure-postgresql
+      title: GitHub Repo
+      icon: github
+    - url: https://github.com/leandromoreirati/backstage-demo
+      title: Source Code
+      icon: github
+spec:
+  type: service
+  owner: group:default/tsdc_platform_admin
+  system: azure
+  lifecycle: production
+  subcomponentOf: component:azure/rg-azure-my-rg
+  dependsOn:
+    - component:azure/rg-azure-my-rg
+  
